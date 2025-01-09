@@ -530,7 +530,7 @@ function RegImport {
         reg import "$PSScriptRoot\Regfiles\$path"  
     }
     else {
-        $defaultUserPath = $env:USERPROFILE.Replace($env:USERNAME, 'Default\NTUSER.DAT')
+        $defaultUserPath = $env:USERPROFILE -Replace "\\$env:USERNAME$", '\Default\NTUSER.DAT'
         
         reg load "HKU\Default" $defaultUserPath | Out-Null
         reg import "$PSScriptRoot\Regfiles\Sysprep\$path"  
